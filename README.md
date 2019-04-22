@@ -1,3 +1,9 @@
+# Makeblock Library - This fork
+
+***NOTE:*** This is a fork with some fixes (in this `fixes` branch) compared to upstream Makeblock code, since Makeblock themselves seem uninterested in fixes from the community. I maintain it sporadically and based on what I need.
+
+Below follows the original README.
+
 # Makeblock Library v3.26
 
 Arduino Library for Makeblock Electronic Modules
