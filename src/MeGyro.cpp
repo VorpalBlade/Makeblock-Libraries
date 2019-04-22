@@ -180,12 +180,16 @@ void MeGyro::begin(void)
   gyrZoffs = 0;
   Wire.begin();
   delay(200);
-  writeReg(0x6b, 0x00);//close the sleep mode
+  writeReg(0x6b, 0x00);  //close the sleep mode
   delay(100);
-  writeReg(0x1a, 0x01);//configurate the digital low pass filter
-  writeReg(0x1b, 0x08);//set the gyro scale to 500 deg/s
+  writeReg(0x1a, 0x01);  //configurate the digital low pass filter
+  writeReg(0x1b, 0x08);  //set the gyro scale to 500 deg/s
   delay(100);
-  deviceCalibration();
+  deviceCalibration();   //  Determine gyro drift
+  update();              //  Read data
+  double ax, ay;
+  gx = ax = atan2(accX, sqrt( pow(accY, 2) + pow(accZ, 2) ) ) * 180 / 3.1415926;  //  Initialize angle
+  gy = ay = atan2(accY, sqrt( pow(accX, 2) + pow(accZ, 2) ) ) * 180 / 3.1415926;  //  Initialize angle
 }
 
 /**
